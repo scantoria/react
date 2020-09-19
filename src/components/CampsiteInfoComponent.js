@@ -29,6 +29,7 @@ function RenderComments({comments}){
             </div>
         );
     } 
+
     return(
         <div />
     );
@@ -45,6 +46,7 @@ function CampsiteInfo(props){
             </div>
         );
     }
+    
     return <div />;
 }
 

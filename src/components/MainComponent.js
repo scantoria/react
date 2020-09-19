@@ -13,9 +13,11 @@ class Main extends Component{
         selectedCampsite: null
       }
   }
+
   onCampsiteSelect(campsiteId) {
         this.setState({selectedCampsite: campsiteId});
     }
+    
   render() {
     return (
       <div>
