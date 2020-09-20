@@ -3,9 +3,10 @@ import Header from "./HeaderComponent";
 import Footer from "./FooterComponent";
 import Directory from "./DirectoryComponent";
 import About from "./AboutComponent";
-import { CAMPSITES } from '../shared/campsites';
 import Home from './HomeComponent';
+import Contact from './ContactComponent';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { CAMPSITES } from '../shared/campsites';
 import { PARTNERS } from '../shared/partners';
 import { COMMENTS } from '../shared/comments';
 import { PROMOTIONS } from '../shared/promotions';
@@ -21,7 +22,7 @@ class Main extends Component{
         promotions: PROMOTIONS
       };
   }
-    
+
   render() {
     const HomePage = () => {
       return (
@@ -40,6 +41,7 @@ class Main extends Component{
             <Route path='/home' component={HomePage} />
             <Route exact path='/directory' render={() => <Directory campsites={this.state.campsites} />} />
             <Route exact path='/about' render={() => <About partners={this.state.partners} />} />
+            <Route exact path='/contact' component={Contact} />
             <Redirect to='/home' />
         </Switch>
         <Footer />
