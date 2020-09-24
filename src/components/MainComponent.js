@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Header from "./HeaderComponent";
 import Footer from "./FooterComponent";
 import Directory from "./DirectoryComponent";
 import About from "./AboutComponent";
 import Home from './HomeComponent';
 import Contact from './ContactComponent';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import CampsiteInfo from './CampsiteInfoComponent';
 import { CAMPSITES } from '../shared/campsites';
 import { PARTNERS } from '../shared/partners';
 import { COMMENTS } from '../shared/comments';
 import { PROMOTIONS } from '../shared/promotions';
-
 
 class Main extends Component{
   constructor(props) {
@@ -32,14 +32,24 @@ class Main extends Component{
           partner={this.state.partners.filter(partner => partner.featured)[0]}
         />
       );
+    }
+
+    const CampsiteWithId = ({match}) => {
+      return (
+          <CampsiteInfo 
+              campsite={this.state.campsites.filter(campsite => campsite.id === +match.params.campsiteId)[0]}
+              comments={this.state.comments.filter(comment => comment.campsiteId === +match.params.campsiteId)}
+          />
+      );
     };
 
     return (
       <div>
         <Header />
         <Switch>
-            <Route path='/home' component={HomePage} />
+            <Route path={'/home'} component={HomePage} />
             <Route exact path='/directory' render={() => <Directory campsites={this.state.campsites} />} />
+            <Route path={'/directory/:campsiteId'} component={CampsiteWithId} />
             <Route exact path='/about' render={() => <About partners={this.state.partners} />} />
             <Route exact path='/contact' component={Contact} />
             <Redirect to='/home' />
