@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Header from "./HeaderComponent";
 import Footer from "./FooterComponent";
 import Directory from "./DirectoryComponent";

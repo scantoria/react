@@ -3,7 +3,7 @@ import { PARTNERS } from '../shared/partners';
 import { COMMENTS } from '../shared/comments';
 import { PROMOTIONS } from '../shared/promotions';
 
-const initialState = {
+export const initialState = {
     campsites: CAMPSITES,
     partners: PARTNERS,
     comments: COMMENTS,
